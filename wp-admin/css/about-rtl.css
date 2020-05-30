@@ -305,25 +305,11 @@
 	line-height: inherit;
 }
 
-.about__section a {
-	color: #5f1b29;
-	text-decoration: underline;
-}
-
+.about__section a,
 .about__section a:hover,
 .about__section a:active,
 .about__section a:focus {
-	text-decoration: none;
-}
-
-.wp-credits-list a {
-	text-decoration: none;
-}
-
-.wp-credits-list a:hover,
-.wp-credits-list a:active,
-.wp-credits-list a:focus {
-	text-decoration: underline;
+	color: inherit;
 }
 
 .about__container ul {
@@ -441,7 +427,7 @@
 	grid-column: 2;
 	-ms-grid-row: 1;
 	grid-row: 1;
-	background-color: #5f1b29;
+	background-color: #5F1B29;
 	background-color: var(--accent-2);
 	margin: 0;
 	padding: 32px;

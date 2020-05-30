@@ -631,15 +631,12 @@ class WP_List_Table {
 		<div class="view-switch">
 		<?php
 		foreach ( $this->modes as $mode => $title ) {
-			$classes      = array( 'view-' . $mode );
-			$aria_current = '';
-
+			$classes = array( 'view-' . $mode );
 			if ( $current_mode === $mode ) {
-				$classes[]    = 'current';
-				$aria_current = ' aria-current="page"';
+				$classes[] = 'current';
 			}
 			printf(
-				"<a href='%s' class='%s' id='view-switch-$mode'$aria_current><span class='screen-reader-text'>%s</span></a>\n",
+				"<a href='%s' class='%s' id='view-switch-$mode'><span class='screen-reader-text'>%s</span></a>\n",
 				esc_url( add_query_arg( 'mode', $mode ) ),
 				implode( ' ', $classes ),
 				$title

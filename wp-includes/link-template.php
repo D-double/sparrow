@@ -166,6 +166,7 @@ function get_permalink( $post = 0, $leavename = false ) {
 	$permalink = apply_filters( 'pre_post_link', $permalink, $post, $leavename );
 
 	if ( '' != $permalink && ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft', 'future' ) ) ) {
+		$unixtime = strtotime( $post->post_date );
 
 		$category = '';
 		if ( strpos( $permalink, '%category%' ) !== false ) {
@@ -211,11 +212,9 @@ function get_permalink( $post = 0, $leavename = false ) {
 			$author     = $authordata->user_nicename;
 		}
 
-		// This is not an API call because the permalink is based on the stored post_date value,
-		// which should be parsed as local time regardless of the default PHP timezone.
-		$date = explode( ' ', str_replace( array( '-', ':' ), ' ', $post->post_date ) );
-
-		$rewritereplace = array(
+		$date           = explode( ' ', gmdate( 'Y m d H i s', $unixtime ) );
+		$rewritereplace =
+		array(
 			$date[0],
 			$date[1],
 			$date[2],
@@ -228,10 +227,8 @@ function get_permalink( $post = 0, $leavename = false ) {
 			$author,
 			$post->post_name,
 		);
-
-		$permalink = home_url( str_replace( $rewritecode, $rewritereplace, $permalink ) );
-		$permalink = user_trailingslashit( $permalink, 'single' );
-
+		$permalink      = home_url( str_replace( $rewritecode, $rewritereplace, $permalink ) );
+		$permalink      = user_trailingslashit( $permalink, 'single' );
 	} else { // if they're not using the fancy permalink option
 		$permalink = home_url( '?p=' . $post->ID );
 	}

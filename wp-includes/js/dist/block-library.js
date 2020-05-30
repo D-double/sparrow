@@ -3027,17 +3027,13 @@ var others = [{
   },
   patterns: [/^https?:\/\/cloudup\.com\/.+/i]
 }, {
-  // Deprecated since CollegeHumor content is now powered by YouTube
   name: 'core-embed/collegehumor',
   settings: {
     title: 'CollegeHumor',
     icon: embedVideoIcon,
-    description: Object(external_this_wp_i18n_["__"])('Embed CollegeHumor content.'),
-    supports: {
-      inserter: false
-    }
+    description: Object(external_this_wp_i18n_["__"])('Embed CollegeHumor content.')
   },
-  patterns: []
+  patterns: [/^https?:\/\/(www\.)?collegehumor\.com\/.+/i]
 }, {
   name: 'core-embed/crowdsignal',
   settings: {
